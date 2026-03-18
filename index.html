@@ -46,6 +46,32 @@
             opacity: 0.5;
             border-radius: 50%;
         }
+        /* 涂鸦风格悬停背景 */
+        .graffiti-bg {
+            position: absolute;
+            inset: -4px;
+            background-color: #f97316; /* 亮橙色 Tailwind orange-500 */
+            /* 叠加噪点纹理增加粗犷质感 */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+            z-index: 0;
+            opacity: 0;
+            transform: scale(0.95) rotate(0deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* 不规则手绘边缘效果 */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+        }
+        .team-card:hover .graffiti-bg {
+            opacity: 1;
+            transform: scale(1.02) rotate(-2deg);
+        }
+        /* 卡片主体质感 */
+        .team-content {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
     </style>
 </head>
 <body class="relative">
@@ -196,38 +222,29 @@
                         <div class="text-xs text-gray-400 space-y-1.5 font-mono">
                             <p>AGE: 29</p>
                             <p>JOB: 市场总监</p>
-                            <p>FREQ: 5次/周</p>
-                        </div>
-                    </div>
-                    <div class="w-full sm:w-2/3 space-y-5">
-                        <div>
-                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>核心目标 (Goals)</h4>
-                            <p class="text-sm text-gray-300 leading-relaxed">追求力量突破与肌肉维度的增长，需要严格执行渐进式超负荷训练计划，精准控制每组容量。</p>
-                        </div>
-                        <div>
-                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>痛点 (Pain Points)</h4>
-                            <p class="text-sm text-gray-300 leading-relaxed">用手机备忘录记录训练极其低效，难以直观分析每月的容量变化趋势；传统健身APP的社交属性太重，干扰纯粹的记录需求。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Team Section (更新学号与更通用的开发角色) -->
+        <!-- Our Team Section (涂鸦质感 + 大图重构) -->
         <section id="team" class="relative">
             <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-12 relative z-10 border-b border-gray-700 pb-6">团队成员 <span class="text-neon">/ SQUAD</span></h2>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                 
                 <!-- Member 1 -->
-                <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-neon/30 transition-colors flex flex-col items-center text-center">
-                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-neon transition-colors">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jinyu&backgroundColor=1e293b" alt="Jinyu Cai" class="w-full h-full object-cover" />
+                <div class="relative group cursor-pointer team-card h-full">
+                    <!-- 涂鸦悬停背景 -->
+                    <div class="graffiti-bg"></div>
+                    
+                    <!-- 卡片主体内容 -->
+                    <div class="relative z-10 team-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+                        <!-- 大图展示 (悬停恢复彩色) -->
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Jinyu&backgroundColor=1e293b" alt="Jinyu Cai" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                            <!-- 学号作为街头感标签 -->
+                            <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-gray-300 text-[0.65rem] font-mono px-2.5 py-1 rounded border border-white/10 group-hover:border-orange-500/50 group-hover:text-white transition-colors">
+                                ID: 2361409
+                            </div>
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Jinyu Cai</h4>
-                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361409</p>
-                        <p class="text-neon text-[0.7rem] font-bold tracking-widest mb-3 uppercase">全栈开发 / 架构</p>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Jinyu Cai</h4>
+                        <p class="text-orange-500/90 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">全栈开发 / 架构</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
                             负责项目整体技术选型与前后端架构搭建，专注于提升应用的数据处理效率与同步稳定性。
                         </p>
@@ -235,14 +252,17 @@
                 </div>
 
                 <!-- Member 2 -->
-                <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-accent/30 transition-colors flex flex-col items-center text-center">
-                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-accent transition-colors">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chao&backgroundColor=1e293b" alt="Chao Sheng" class="w-full h-full object-cover" />
+                <div class="relative group cursor-pointer team-card h-full">
+                    <div class="graffiti-bg" style="border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; transition-delay: 50ms;"></div>
+                    <div class="relative z-10 team-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Chao&backgroundColor=1e293b" alt="Chao Sheng" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                            <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-gray-300 text-[0.65rem] font-mono px-2.5 py-1 rounded border border-white/10 group-hover:border-orange-500/50 group-hover:text-white transition-colors">
+                                ID: 2361088
+                            </div>
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Chao Sheng</h4>
-                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361088</p>
-                        <p class="text-accent text-[0.7rem] font-bold tracking-widest mb-3 uppercase">产品经理 / 需求分析</p>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Chao Sheng</h4>
+                        <p class="text-orange-500/90 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">产品经理 / 需求分析</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
                             深入调研健身人群需求，规划产品核心功能路线图，并将游戏化成就系统融入日常训练。
                         </p>
@@ -250,14 +270,17 @@
                 </div>
 
                 <!-- Member 3 -->
-                <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-purple-500/30 transition-colors flex flex-col items-center text-center">
-                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-purple-500 transition-colors">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mingze&backgroundColor=1e293b" alt="Mingze Sun" class="w-full h-full object-cover" />
+                <div class="relative group cursor-pointer team-card h-full">
+                    <div class="graffiti-bg" style="border-radius: 225px 15px 255px 15px/15px 255px 15px 225px; transition-delay: 100ms;"></div>
+                    <div class="relative z-10 team-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Mingze&backgroundColor=1e293b" alt="Mingze Sun" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                            <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-gray-300 text-[0.65rem] font-mono px-2.5 py-1 rounded border border-white/10 group-hover:border-orange-500/50 group-hover:text-white transition-colors">
+                                ID: 2361188
+                            </div>
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Mingze Sun</h4>
-                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361188</p>
-                        <p class="text-purple-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">UI/UX 设计 / 前端</p>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Mingze Sun</h4>
+                        <p class="text-orange-500/90 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">UI/UX 设计 / 前端</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
                             负责塑造极简、清爽的用户界面。致力于减少用户在组间休息时的交互成本，让记录变得本能。
                         </p>
@@ -265,14 +288,17 @@
                 </div>
 
                 <!-- Member 4 -->
-                <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-pink-500/30 transition-colors flex flex-col items-center text-center">
-                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-pink-500 transition-colors">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zihao&backgroundColor=1e293b" alt="Zihao Gong" class="w-full h-full object-cover" />
+                <div class="relative group cursor-pointer team-card h-full">
+                    <div class="graffiti-bg" style="border-radius: 15px 255px 15px 225px/225px 15px 255px 15px; transition-delay: 150ms;"></div>
+                    <div class="relative z-10 team-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Zihao&backgroundColor=1e293b" alt="Zihao Gong" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                            <div class="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-gray-300 text-[0.65rem] font-mono px-2.5 py-1 rounded border border-white/10 group-hover:border-orange-500/50 group-hover:text-white transition-colors">
+                                ID: 2360998
+                            </div>
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Zihao Gong</h4>
-                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2360998</p>
-                        <p class="text-pink-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">测试开发 / 运营</p>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Zihao Gong</h4>
+                        <p class="text-orange-500/90 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">测试开发 / 运营</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
                             负责质量保障与早期用户社区的搭建，收集核心种子用户的反馈以持续迭代产品体验。
                         </p>
