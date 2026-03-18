@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitTrack AI | 智能运动追踪</title>
+    <title>FitTrack | 智能健身记录</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
     <script>
@@ -15,20 +15,10 @@
                         heading: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        dark: '#0B0E14',
-                        card: '#151A23',
-                        neon: '#00FFA3', // 运动荧光绿
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        neon: '#10b981',
                         accent: '#3B82F6',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'dash': 'dash 2s linear alternate infinite',
-                    },
-                    keyframes: {
-                        dash: {
-                            '0%': { strokeDashoffset: '100' },
-                            '100%': { strokeDashoffset: '0' },
-                        }
                     }
                 }
             }
@@ -36,256 +26,255 @@
     </script>
     <style>
         body {
-            background-color: #0B0E14;
+            background-color: #0f172a;
             color: #E2E8F0;
             overflow-x: hidden;
         }
         /* 玻璃态背景 */
         .glass-panel {
-            background: rgba(21, 26, 35, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        /* AI 骨骼节点动画 */
-        .skeleton-node {
+        /* 动态背景光晕 */
+        .blob {
             position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #00FFA3;
+            filter: blur(90px);
+            z-index: -1;
+            opacity: 0.5;
             border-radius: 50%;
-            box-shadow: 0 0 15px #00FFA3;
-            animation: pulse-node 1.5s infinite alternate;
-        }
-        @keyframes pulse-node {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 25px #00FFA3; }
-        }
-        .skeleton-line {
-            position: absolute;
-            background-color: rgba(0, 255, 163, 0.5);
-            transform-origin: left center;
-        }
-        /* 网格背景 */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="bg-grid relative">
+<body class="relative">
+    <!-- 动态渐变背景元素，告别纯黑底色 -->
+    <div class="blob bg-emerald-900/40 w-[500px] h-[500px] top-0 left-[-10%]"></div>
+    <div class="blob bg-blue-900/40 w-[600px] h-[600px] bottom-[10%] right-[-10%]"></div>
+    <div class="blob bg-indigo-900/30 w-[800px] h-[800px] top-[30%] left-[20%]"></div>
 
     <!-- 顶部导航 / 标志 -->
     <nav class="absolute top-0 w-full p-6 lg:px-16 flex justify-between items-center z-50">
         <div class="flex items-center gap-2">
             <svg class="text-neon w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            <span class="font-heading font-extrabold text-2xl tracking-wide text-white">FIT<span class="text-neon">TRACK</span> AI</span>
+            <span class="font-heading font-extrabold text-2xl tracking-wide text-white">FIT<span class="text-neon">TRACK</span></span>
         </div>
-        <a href="#team" class="hidden md:inline-block px-6 py-2 rounded-full border border-neon/50 text-neon hover:bg-neon hover:text-dark transition-all font-semibold text-sm">
-            认识团队
-        </a>
+        <div class="hidden md:flex gap-6">
+            <a href="#concept" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">项目概念</a>
+            <a href="#personas" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">用户画像</a>
+            <a href="#team" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">团队成员</a>
+        </div>
     </nav>
 
     <!-- Hero Section / 首屏视觉 -->
-    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-16 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+    <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 lg:px-16 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         
         <!-- 左侧文案 -->
         <div class="w-full lg:w-1/2 z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/20 text-neon text-xs font-bold tracking-wider mb-6">
-                <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
-                COMPUTER VISION POWERED
+                SMART WORKOUT LOG
             </div>
             <h1 class="font-heading text-5xl lg:text-7xl font-black text-white leading-tight mb-6 uppercase italic">
-                纠正每一个<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-blue-400">错误动作</span>
+                掌控你的<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-blue-400">训练节奏</span>
             </h1>
-            <p class="text-gray-400 text-lg mb-8 max-w-md">
-                利用先进的 AI 计算机视觉技术，实时捕捉你的运动姿态。居家健身，也能拥有专业私教级的精准反馈。
+            <p class="text-gray-300 text-lg mb-8 max-w-md">
+                告别纸笔记录和盲目训练。通过智能化的数据追踪与科学的计划安排，让每一次流汗都清晰可见，助你突破健身瓶颈。
             </p>
-            <div class="flex gap-4">
-                <button class="px-8 py-4 bg-neon text-dark font-bold rounded-lg hover:bg-white transition-colors shadow-[0_0_20px_rgba(0,255,163,0.3)]">
-                    查看技术白皮书
-                </button>
-            </div>
         </div>
 
-        <!-- 右侧视觉：AI识别模拟 -->
-        <div class="w-full lg:w-1/2 relative">
-            <div class="relative rounded-2xl overflow-hidden glass-panel p-2 shadow-2xl">
-                <!-- 健身背景图 -->
-                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000&auto=format&fit=crop" alt="Workout Tracking" class="rounded-xl w-full h-[400px] object-cover opacity-60">
-                
-                <!-- 模拟骨骼点 (定位相对于图片) -->
-                <div class="absolute inset-0 z-10" style="pointer-events: none;">
-                    <!-- 头/肩膀/手臂节点 -->
-                    <div class="skeleton-node top-[15%] left-[45%]"></div>
-                    <div class="skeleton-node top-[25%] left-[30%]"></div>
-                    <div class="skeleton-node top-[22%] left-[60%]"></div>
-                    <div class="skeleton-node top-[45%] left-[20%]"></div>
-                    <div class="skeleton-node top-[40%] left-[75%]"></div>
-                    
-                    <!-- 模拟连线 -->
-                    <div class="skeleton-line top-[16%] left-[46%] w-[16%] h-[2px] rotate-[150deg]"></div>
-                    <div class="skeleton-line top-[16%] left-[46%] w-[16%] h-[2px] rotate-[20deg]"></div>
-                    <div class="skeleton-line top-[26%] left-[30%] w-[25%] h-[2px] rotate-[110deg]"></div>
-                    <div class="skeleton-line top-[23%] left-[60%] w-[20%] h-[2px] rotate-[50deg]"></div>
-                    
-                    <!-- UI 数据面板悬浮框 -->
-                    <div class="absolute top-4 left-4 glass-panel px-3 py-2 rounded-lg flex items-center gap-3 border-l-4 border-l-neon">
-                        <div class="text-xs text-gray-400 font-mono">POSE ACCURACY</div>
-                        <div class="text-neon font-bold text-xl">98.2%</div>
-                    </div>
-                    <div class="absolute bottom-6 right-6 glass-panel px-4 py-3 rounded-xl flex items-center gap-4">
-                        <svg class="w-8 h-8 text-rose-500 animate-pulse-slow" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                        <div>
-                            <div class="text-[10px] text-gray-400 uppercase">Heart Rate</div>
-                            <div class="text-white font-bold font-mono">142 <span class="text-sm text-gray-500">BPM</span></div>
-                        </div>
-                    </div>
+        <!-- 右侧视觉：清爽的健身数据卡片重叠展示 -->
+        <div class="w-full lg:w-1/2 relative h-[400px]">
+            <!-- 主图 -->
+            <div class="absolute inset-0 rounded-2xl overflow-hidden glass-panel shadow-2xl z-10 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border border-white/10">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop" alt="Gym Workout" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
+                <div class="absolute inset-0 bg-slate-900/40 mix-blend-multiply"></div>
+            </div>
+            <!-- 悬浮数据卡片 1 -->
+            <div class="absolute top-10 -left-6 glass-panel p-4 rounded-xl z-20 animate-[bounce_4s_infinite]">
+                <div class="text-xs text-gray-400 mb-1">TOTAL VOLUME</div>
+                <div class="text-2xl font-bold text-white">12,450 <span class="text-sm text-neon">kg</span></div>
+            </div>
+            <!-- 悬浮数据卡片 2 -->
+            <div class="absolute bottom-10 -right-4 glass-panel p-4 rounded-xl z-20 animate-[bounce_5s_infinite_reverse]">
+                <div class="text-xs text-gray-400 mb-1">WORKOUT STREAK</div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 12.5c0 3-2.5 5.5-5.5 5.5s-5.5-2.5-5.5-5.5c0-3.5 3-6.5 4.5-9.5 1 2 2 4 4.5 4.5 2-.5 2 2.5 2 5z"/></svg>
+                    <span class="text-2xl font-bold text-white">14 <span class="text-sm font-normal text-gray-400">Days</span></span>
                 </div>
             </div>
-            <!-- 背景光晕 -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-neon/20 blur-[100px] -z-10 rounded-full"></div>
         </div>
     </header>
 
-    <div class="max-w-7xl mx-auto px-6 lg:px-16 pb-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-16 pb-24 relative z-10">
         
         <!-- Project Concept Section -->
-        <section class="mb-32">
-            <div class="flex items-end justify-between mb-12 border-b border-gray-800 pb-6">
+        <section id="concept" class="mb-32">
+            <div class="flex items-end justify-between mb-12 border-b border-gray-700 pb-6">
                 <div>
                     <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">项目概念 <span class="text-neon">/ CONCEPT</span></h2>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1: The Problem -->
+                <!-- Card 1 -->
                 <div class="card p-8 rounded-2xl glass-panel group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
+                    <div class="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 border border-red-500/20">
                         <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     </div>
                     <h3 class="text-xl font-heading font-bold mb-3 text-white">核心痛点</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        健身初学者难以判断动作是否标准，错误的姿态不仅影响肌肉刺激效果，极易导致不可逆的关节与韧带损伤。线下私教成本高昂，且无法随时随地陪伴。
+                    <p class="text-gray-300 leading-relaxed text-sm">
+                        健身者在训练时往往难以科学地记录和追踪自己的训练容量。传统的纸笔记录容易丢失且不便携，而市面上的通用App操作繁琐，打断了训练节奏。
                     </p>
                 </div>
                 
-                <!-- Card 2: Our Solution -->
-                <div class="card p-8 rounded-2xl glass-panel group hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-[40px] rounded-full"></div>
-                    <div class="w-14 h-14 rounded-full bg-neon/10 flex items-center justify-center mb-6 border border-neon/20 group-hover:bg-neon/20 transition-colors relative z-10">
+                <!-- Card 2 -->
+                <div class="card p-8 rounded-2xl glass-panel group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-14 h-14 rounded-full bg-neon/10 flex items-center justify-center mb-6 border border-neon/20">
                         <svg class="w-7 h-7 text-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-heading font-bold mb-3 text-white relative z-10">AI 解决方案</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm relative z-10">
-                        只需一台手机，AI 算法通过前置摄像头实时提取 33 个核心骨骼关键点，毫秒级对比专业动作库，实时语音+视觉双重纠偏，并智能调整训练负荷。
+                    <h3 class="text-xl font-heading font-bold mb-3 text-white">我们的方案</h3>
+                    <p class="text-gray-300 leading-relaxed text-sm">
+                        打造一款极简、高效的智能健身记录应用。提供快速录入组件、自动生成训练热力图与数据报表，让每一次训练数据的增长肉眼可见。
                     </p>
                 </div>
                 
-                <!-- Card 3: Target Users -->
+                <!-- Card 3 -->
                 <div class="card p-8 rounded-2xl glass-panel group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                    <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20">
                         <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
                     <h3 class="text-xl font-heading font-bold mb-3 text-white">目标受众</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        针对具有居家健身需求、时间碎片化的白领人群，以及希望提升孤立发力技巧、打破增肌瓶颈的中阶健身爱好者。
+                    <p class="text-gray-300 leading-relaxed text-sm">
+                        针对具有规律健身习惯、渴望突破平台期的健身爱好者，以及需要系统化管理个人运动状态的自律人群。
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Our Team Section (Redesigned as Sports Cards) -->
-        <section id="team" class="relative">
-            <!-- 装饰性背景文字 -->
-            <div class="absolute -top-10 left-0 text-[100px] font-heading font-black text-white/[0.02] uppercase select-none pointer-events-none z-0 whitespace-nowrap overflow-hidden w-full">
-                THE FOUNDERS
+        <!-- Personas Section (新增模块) -->
+        <section id="personas" class="mb-32">
+            <div class="flex items-end justify-between mb-12 border-b border-gray-700 pb-6">
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">用户画像 <span class="text-neon">/ PERSONAS</span></h2>
+                    <p class="text-sm text-gray-400 mt-2 font-mono">* AI Assisted Generation (10-80-10 Rule Applied)</p>
+                </div>
             </div>
             
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-12 relative z-10">核心团队 <span class="text-neon">/ SQUAD</span></h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Persona 1 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col sm:flex-row gap-6">
+                    <div class="w-full sm:w-1/3 flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-gray-700 pb-6 sm:pb-0 sm:pr-6">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Alex&backgroundColor=b6e3f4" alt="Persona 1" class="w-24 h-24 rounded-full mb-4 border-2 border-blue-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-1">Alex 陈</h3>
+                        <p class="text-blue-400 text-sm font-semibold mb-3">职场新人 / 健身小白</p>
+                        <div class="text-xs text-gray-400 space-y-1.5 font-mono">
+                            <p>AGE: 24</p>
+                            <p>JOB: 软件工程师</p>
+                            <p>FREQ: 2次/周</p>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-2/3 space-y-5">
+                        <div>
+                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>核心目标 (Goals)</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">希望通过健身改善久坐带来的体态问题，达到减脂增肌的效果，并建立规律的运动习惯。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>痛点 (Pain Points)</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">对器械和动作不熟悉；记不住上次用的重量，每次都在“盲练”；缺乏即时的数据正向反馈，容易半途而废。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Persona 2 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col sm:flex-row gap-6">
+                    <div class="w-full sm:w-1/3 flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-gray-700 pb-6 sm:pb-0 sm:pr-6">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Sarah&backgroundColor=ffdfbf" alt="Persona 2" class="w-24 h-24 rounded-full mb-4 border-2 border-orange-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-1">Sarah 林</h3>
+                        <p class="text-orange-400 text-sm font-semibold mb-3">资深爱好者 / 举铁老手</p>
+                        <div class="text-xs text-gray-400 space-y-1.5 font-mono">
+                            <p>AGE: 29</p>
+                            <p>JOB: 市场总监</p>
+                            <p>FREQ: 5次/周</p>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-2/3 space-y-5">
+                        <div>
+                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>核心目标 (Goals)</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">追求力量突破与肌肉维度的增长，需要严格执行渐进式超负荷训练计划，精准控制每组容量。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>痛点 (Pain Points)</h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">用手机备忘录记录训练极其低效，难以直观分析每月的容量变化趋势；传统健身APP的社交属性太重，干扰纯粹的记录需求。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section (更新学号与更通用的开发角色) -->
+        <section id="team" class="relative">
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-12 relative z-10 border-b border-gray-700 pb-6">团队成员 <span class="text-neon">/ SQUAD</span></h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                 
-                <!-- 成员卡片模板 -->
                 <!-- Member 1 -->
                 <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neon/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                    <div class="bg-card p-5 rounded-xl h-full relative z-10 border border-transparent group-hover:border-neon/30 transition-colors">
-                        <div class="relative mb-5">
-                            <div class="aspect-[4/5] rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 relative">
-                                <img src="https://api.dicebear.com/7.x/micah/svg?seed=Jinyu&backgroundColor=151A23" alt="Jinyu Cai" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-500" />
-                            </div>
-                            <!-- 科技感角标 -->
-                            <div class="absolute top-2 right-2 bg-dark/80 backdrop-blur text-[10px] font-mono text-neon px-2 py-1 rounded border border-neon/30">
-                                DEV
-                            </div>
+                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-neon/30 transition-colors flex flex-col items-center text-center">
+                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-neon transition-colors">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jinyu&backgroundColor=1e293b" alt="Jinyu Cai" class="w-full h-full object-cover" />
                         </div>
                         <h4 class="text-xl font-heading font-bold mb-1 text-white">Jinyu Cai</h4>
-                        <p class="text-neon text-[0.7rem] font-bold tracking-widest mb-3 uppercase">技术总监 / 算法</p>
+                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361409</p>
+                        <p class="text-neon text-[0.7rem] font-bold tracking-widest mb-3 uppercase">全栈开发 / 架构</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
-                            主攻 MediaPipe 与 OpenPose 底层优化，将姿态识别延迟压缩至 20ms 内，确保反馈零卡顿。
+                            负责项目整体技术选型与前后端架构搭建，专注于提升应用的数据处理效率与同步稳定性。
                         </p>
                     </div>
                 </div>
 
                 <!-- Member 2 -->
                 <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                    <div class="bg-card p-5 rounded-xl h-full relative z-10 border border-transparent group-hover:border-accent/30 transition-colors">
-                        <div class="relative mb-5">
-                            <div class="aspect-[4/5] rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 relative">
-                                <img src="https://api.dicebear.com/7.x/micah/svg?seed=Chao&backgroundColor=151A23" alt="Chao Sheng" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-500" />
-                            </div>
-                            <div class="absolute top-2 right-2 bg-dark/80 backdrop-blur text-[10px] font-mono text-accent px-2 py-1 rounded border border-accent/30">
-                                PM
-                            </div>
+                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-accent/30 transition-colors flex flex-col items-center text-center">
+                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-accent transition-colors">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chao&backgroundColor=1e293b" alt="Chao Sheng" class="w-full h-full object-cover" />
                         </div>
                         <h4 class="text-xl font-heading font-bold mb-1 text-white">Chao Sheng</h4>
-                        <p class="text-accent text-[0.7rem] font-bold tracking-widest mb-3 uppercase">产品负责人 / 机制</p>
+                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361088</p>
+                        <p class="text-accent text-[0.7rem] font-bold tracking-widest mb-3 uppercase">产品经理 / 需求分析</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
-                            深谙力量训练原理，将冰冷的数据转化为“游戏化”的成就系统，让训练像通关一样上瘾。
+                            深入调研健身人群需求，规划产品核心功能路线图，并将游戏化成就系统融入日常训练。
                         </p>
                     </div>
                 </div>
 
                 <!-- Member 3 -->
                 <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-purple-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                    <div class="bg-card p-5 rounded-xl h-full relative z-10 border border-transparent group-hover:border-purple-500/30 transition-colors">
-                        <div class="relative mb-5">
-                            <div class="aspect-[4/5] rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 relative">
-                                <img src="https://api.dicebear.com/7.x/micah/svg?seed=Mingze&backgroundColor=151A23" alt="Mingze Sun" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-500" />
-                            </div>
-                            <div class="absolute top-2 right-2 bg-dark/80 backdrop-blur text-[10px] font-mono text-purple-400 px-2 py-1 rounded border border-purple-500/30">
-                                UI/UX
-                            </div>
+                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-purple-500/30 transition-colors flex flex-col items-center text-center">
+                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-purple-500 transition-colors">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mingze&backgroundColor=1e293b" alt="Mingze Sun" class="w-full h-full object-cover" />
                         </div>
                         <h4 class="text-xl font-heading font-bold mb-1 text-white">Mingze Sun</h4>
-                        <p class="text-purple-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">交互设计 / 视觉</p>
+                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2361188</p>
+                        <p class="text-purple-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">UI/UX 设计 / 前端</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
-                            设计了具有未来感的 HUD（平视显示器）风格运动界面，让用户在流汗时享受极致视觉。
+                            负责塑造极简、清爽的用户界面。致力于减少用户在组间休息时的交互成本，让记录变得本能。
                         </p>
                     </div>
                 </div>
 
                 <!-- Member 4 -->
                 <div class="glass-panel p-1 rounded-2xl relative group overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-pink-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                    <div class="bg-card p-5 rounded-xl h-full relative z-10 border border-transparent group-hover:border-pink-500/30 transition-colors">
-                        <div class="relative mb-5">
-                            <div class="aspect-[4/5] rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 relative">
-                                <img src="https://api.dicebear.com/7.x/micah/svg?seed=Zihao&backgroundColor=151A23" alt="Zihao Gong" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-500" />
-                            </div>
-                            <div class="absolute top-2 right-2 bg-dark/80 backdrop-blur text-[10px] font-mono text-pink-400 px-2 py-1 rounded border border-pink-500/30">
-                                GROWTH
-                            </div>
+                    <div class="bg-card p-6 rounded-xl h-full relative z-10 border border-transparent group-hover:border-pink-500/30 transition-colors flex flex-col items-center text-center">
+                        <div class="aspect-square rounded-full overflow-hidden w-24 h-24 mb-4 border-4 border-gray-700 group-hover:border-pink-500 transition-colors">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Zihao&backgroundColor=1e293b" alt="Zihao Gong" class="w-full h-full object-cover" />
                         </div>
                         <h4 class="text-xl font-heading font-bold mb-1 text-white">Zihao Gong</h4>
-                        <p class="text-pink-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">社区增长 / 运营</p>
+                        <p class="text-gray-400 text-[0.65rem] font-mono mb-3 bg-gray-800/50 px-2 py-1 rounded">ID: 2360998</p>
+                        <p class="text-pink-400 text-[0.7rem] font-bold tracking-widest mb-3 uppercase">测试开发 / 运营</p>
                         <p class="text-xs text-gray-400 leading-relaxed">
-                            构建线上云健身房，通过排行榜与线上组队挑战赛，打造高粘性的硬核运动社区。
+                            负责质量保障与早期用户社区的搭建，收集核心种子用户的反馈以持续迭代产品体验。
                         </p>
                     </div>
                 </div>
@@ -293,9 +282,5 @@
         </section>
 
     </div>
-
-    <!-- 底部科幻光束 -->
-    <div class="h-1 w-full bg-gradient-to-r from-transparent via-neon to-transparent opacity-20 mt-12"></div>
-
 </body>
 </html>
