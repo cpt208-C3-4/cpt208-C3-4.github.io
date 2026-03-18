@@ -1,11 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>CPT208 C3-4 Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目概念与团队展示</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入衬线字体和无衬线字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F7F4EB;
+            font-family: 'Inter', sans-serif;
+            color: #2D3748;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
+        .label-text {
+            color: #8C7355;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body>
-    <h1>欢迎来到 CPT208 C3-4 团队主页！</h1>
-    <p>我们的 GitHub Pages 搭建成功啦！</p>
+<body class="p-8 md:p-16">
+
+    <!-- 顶层容器 -->
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Project Concept Section -->
+        <section class="mb-20">
+            <p class="label-text mb-2">PROJECT CONCEPT</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-10 text-slate-800">What We Want to Build</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: The Problem -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4">The Problem</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Visitors around Pingjiang Road often struggle to decide where to go, what nearby places are worth visiting, and how to plan a route that fits their time, interests, and travel pace.
+                    </p>
+                </div>
+                
+                <!-- Card 2: Our Solution -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4">Our Solution</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        We propose a smart guide experience that combines place-based recommendations, short cultural introductions, and AI-assisted support to make local exploration easier and more engaging.
+                    </p>
+                </div>
+                
+                <!-- Card 3: Target Users -->
+                <div class="bg-white p-8 rounded-3xl card-shadow border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4">Target Users</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Our project focuses on first-time visitors, young travelers, and time-limited tourists who want a smoother way to explore Suzhou's historic district.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section -->
+        <section class="bg-[#EAE8DE] rounded-[2.5rem] p-8 md:p-12">
+            <p class="label-text mb-2">GROUP MEMBERS</p>
+            <h2 class="text-4xl font-bold mb-2 text-slate-800">Our Team</h2>
+            <p class="text-gray-500 text-sm mb-10 italic">Click each member card to open a full introduction page.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Member 1: Jinyu Cai -->
+                <div class="bg-white p-5 rounded-3xl card-shadow hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-5">
+                        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Jinyu" alt="Jinyu Cai" class="w-full h-full object-cover bg-orange-100" />
+                    </div>
+                    <h4 class="text-xl font-bold mb-1">Jinyu Cai</h4>
+                    <p class="label-text text-[0.7rem] mb-4">STUDENT ID: 2361409</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Interested in AI applications in robotics, emotion analysis, and computer vision.
+                    </p>
+                </div>
+
+                <!-- Member 2: Chao Sheng -->
+                <div class="bg-white p-5 rounded-3xl card-shadow hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-5">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chao" alt="Chao Sheng" class="w-full h-full object-cover bg-blue-50" />
+                    </div>
+                    <h4 class="text-xl font-bold mb-1">Chao Sheng</h4>
+                    <p class="label-text text-[0.7rem] mb-4">STUDENT ID: 2361088</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Interested in games, problem-solving, and taking on new challenges with a practical and curious mindset.
+                    </p>
+                </div>
+
+                <!-- Member 3: Mingze Sun -->
+                <div class="bg-white p-5 rounded-3xl card-shadow hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-5">
+                        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Mingze" alt="Mingze Sun" class="w-full h-full object-cover bg-slate-100" />
+                    </div>
+                    <h4 class="text-xl font-bold mb-1">Mingze Sun</h4>
+                    <p class="label-text text-[0.7rem] mb-4">STUDENT ID: 2361188</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Focusing on front-end development, UI design, and Java programming. Always eager to collaborate and learn.
+                    </p>
+                </div>
+
+                <!-- Member 4: Zihao Gong -->
+                <div class="bg-white p-5 rounded-3xl card-shadow hover:scale-[1.02] transition-transform cursor-pointer">
+                    <div class="aspect-square rounded-2xl overflow-hidden mb-5">
+                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Zihao" alt="Zihao Gong" class="w-full h-full object-cover bg-red-50" />
+                    </div>
+                    <h4 class="text-xl font-bold mb-1">Zihao Gong</h4>
+                    <p class="label-text text-[0.7rem] mb-4">STUDENT ID: 2360998</p>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Interested in game development and excited to work with teammates to create an amazing project together.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 底部消息框模拟器 (对应原图要求的自定义交互) -->
+    <div id="toast" class="fixed bottom-8 right-8 bg-slate-800 text-white px-6 py-3 rounded-xl shadow-2xl opacity-0 transition-opacity pointer-events-none">
+        正在打开成员介绍页面...
+    </div>
+
+    <script>
+        // 简单的点击反馈逻辑
+        document.querySelectorAll('.cursor-pointer').forEach(card => {
+            card.addEventListener('click', () => {
+                const toast = document.getElementById('toast');
+                toast.style.opacity = '1';
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                }, 2000);
+            });
+        });
+    </script>
 </body>
 </html>
