@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitTrack | 智能健身记录</title>
+    <title>FitTrack | Smart Workout Logging</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
     <script>
@@ -30,7 +30,6 @@
             color: #E2E8F0;
             overflow-x: hidden;
         }
-        /* 动态背景光晕 */
         .blob {
             position: absolute;
             filter: blur(90px);
@@ -38,7 +37,6 @@
             opacity: 0.5;
             border-radius: 50%;
         }
-        /* 玻璃态背景 (用于非悬停涂鸦的独立元素) */
         .glass-panel {
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(16px);
@@ -46,12 +44,10 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        /* 涂鸦风格悬停背景 (全局通用) */
         .graffiti-bg {
             position: absolute;
             inset: -4px;
-            background-color: #f97316; /* 亮橙色 Tailwind orange-500 */
-            /* 叠加噪点纹理增加粗犷质感 */
+            background-color: #f97316; 
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
             z-index: 0;
             opacity: 0;
@@ -63,7 +59,6 @@
             opacity: 1;
             transform: scale(1.02) rotate(-1.5deg);
         }
-        /* 涂鸦卡片主体质感 */
         .graffiti-content {
             background: rgba(30, 41, 59, 0.75);
             backdrop-filter: blur(16px);
@@ -74,53 +69,50 @@
     </style>
 </head>
 <body class="relative">
-    <!-- 动态渐变背景元素，维持科技暗黑基调 -->
+    <!-- Animated background gradients -->
     <div class="blob bg-emerald-900/40 w-[500px] h-[500px] top-0 left-[-10%]"></div>
     <div class="blob bg-blue-900/40 w-[600px] h-[600px] bottom-[10%] right-[-10%]"></div>
     <div class="blob bg-indigo-900/30 w-[800px] h-[800px] top-[30%] left-[20%]"></div>
 
-    <!-- 顶部导航 / 标志 -->
+    <!-- Navigation -->
     <nav class="absolute top-0 w-full p-6 lg:px-16 flex justify-between items-center z-50">
         <div class="flex items-center gap-2">
             <svg class="text-neon w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             <span class="font-heading font-extrabold text-2xl tracking-wide text-white">FIT<span class="text-neon">TRACK</span></span>
         </div>
         <div class="hidden md:flex gap-6">
-            <a href="#concept" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">项目概念</a>
-            <a href="#personas" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">用户画像</a>
-            <a href="#team" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors">团队成员</a>
+            <a href="#concept" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors uppercase tracking-widest">Concept</a>
+            <a href="#personas" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors uppercase tracking-widest">Personas</a>
+            <a href="#team" class="text-sm font-semibold text-gray-300 hover:text-white transition-colors uppercase tracking-widest">Squad</a>
         </div>
     </nav>
 
-    <!-- Hero Section / 首屏视觉 -->
+    <!-- Hero Section -->
     <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 lg:px-16 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-        
-        <!-- 左侧文案 -->
         <div class="w-full lg:w-1/2 z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon/10 border border-neon/20 text-neon text-xs font-bold tracking-wider mb-6">
                 SMART WORKOUT LOG
             </div>
             <h1 class="font-heading text-5xl lg:text-7xl font-black text-white leading-tight mb-6 uppercase italic">
-                掌控你的<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-blue-400">训练节奏</span>
+                Master Your<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-blue-400">Training Flow</span>
             </h1>
             <p class="text-gray-300 text-lg mb-8 max-w-md">
-                告别纸笔记录和盲目训练。通过智能化的数据追踪与科学的计划安排，让每一次流汗都清晰可见，助你突破健身瓶颈。
+                Ditch the notebook and stop training in the dark. Visualize every rep with intelligent tracking designed for the modern athlete.
             </p>
         </div>
 
-        <!-- 右侧视觉：清爽的健身数据卡片重叠展示 -->
         <div class="w-full lg:w-1/2 relative h-[400px]">
             <div class="absolute inset-0 rounded-2xl overflow-hidden glass-panel shadow-2xl z-10 transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500 border border-white/10">
                 <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop" alt="Gym Workout" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
                 <div class="absolute inset-0 bg-slate-900/40 mix-blend-multiply"></div>
             </div>
             <div class="absolute top-10 -left-6 glass-panel p-4 rounded-xl z-20 animate-[bounce_4s_infinite]">
-                <div class="text-xs text-gray-400 mb-1">TOTAL VOLUME</div>
+                <div class="text-xs text-gray-400 mb-1 tracking-tighter">TOTAL VOLUME</div>
                 <div class="text-2xl font-bold text-white">12,450 <span class="text-sm text-neon">kg</span></div>
             </div>
             <div class="absolute bottom-10 -right-4 glass-panel p-4 rounded-xl z-20 animate-[bounce_5s_infinite_reverse]">
-                <div class="text-xs text-gray-400 mb-1">WORKOUT STREAK</div>
+                <div class="text-xs text-gray-400 mb-1 tracking-tighter">WORKOUT STREAK</div>
                 <div class="flex items-center gap-2">
                     <svg class="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 12.5c0 3-2.5 5.5-5.5 5.5s-5.5-2.5-5.5-5.5c0-3.5 3-6.5 4.5-9.5 1 2 2 4 4.5 4.5 2-.5 2 2.5 2 5z"/></svg>
                     <span class="text-2xl font-bold text-white">14 <span class="text-sm font-normal text-gray-400">Days</span></span>
@@ -131,65 +123,61 @@
 
     <div class="max-w-7xl mx-auto px-6 lg:px-16 pb-24 relative z-10">
         
-        <!-- Project Concept Section -->
+        <!-- Project Concept -->
         <section id="concept" class="mb-32">
             <div class="flex items-end justify-between mb-12 border-b border-gray-700 pb-6">
                 <div>
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">项目概念 <span class="text-neon">/ CONCEPT</span></h2>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">Project Concept <span class="text-neon">/ THE VISION</span></h2>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
                     <div class="graffiti-bg" style="border-radius: 95% 5% 92% 8% / 6% 95% 5% 94%;"></div>
                     <div class="relative z-10 graffiti-content p-8 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 border border-red-500/20 group-hover:bg-orange-500/20 group-hover:border-orange-500/50 transition-colors">
-                            <svg class="w-7 h-7 text-red-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        <div class="w-14 h-14 rounded-full bg-red-500/10 flex items-center justify-center mb-6 border border-red-500/20">
+                            <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white group-hover:text-orange-400 transition-colors">核心痛点</h3>
+                        <h3 class="text-xl font-heading font-bold mb-3 text-white">Core Challenges</h3>
                         <p class="text-gray-300 leading-relaxed text-sm">
-                            健身者在训练时往往难以科学地记录和追踪自己的训练容量。传统的纸笔记录容易丢失且不便携，而市面上的通用App操作繁琐，打断了训练节奏。
+                            Fitness enthusiasts often struggle to scientifically track their training volume. Traditional paper logs are easy to lose, and generic apps are often too cluttered, breaking the flow of a workout.
                         </p>
                     </div>
                 </div>
                 
-                <!-- Card 2 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 4% 96% 6% 94% / 94% 5% 96% 4%; transition-delay: 50ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 4% 96% 6% 94% / 94% 5% 96% 4%;"></div>
                     <div class="relative z-10 graffiti-content p-8 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="w-14 h-14 rounded-full bg-neon/10 flex items-center justify-center mb-6 border border-neon/20 group-hover:bg-orange-500/20 group-hover:border-orange-500/50 transition-colors">
-                            <svg class="w-7 h-7 text-neon group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div class="w-14 h-14 rounded-full bg-neon/10 flex items-center justify-center mb-6 border border-neon/20">
+                            <svg class="text-neon w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white group-hover:text-orange-400 transition-colors">我们的方案</h3>
+                        <h3 class="text-xl font-heading font-bold mb-3 text-white">Our Solution</h3>
                         <p class="text-gray-300 leading-relaxed text-sm">
-                            打造一款极简、高效的智能健身记录应用。提供快速录入组件、自动生成训练热力图与数据报表，让每一次训练数据的增长肉眼可见。
+                            We are building a minimalist, high-efficiency logging app. Featuring rapid input widgets and automated volume heatmaps, we make your physical progress visually undeniable.
                         </p>
                     </div>
                 </div>
                 
-                <!-- Card 3 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 92% 8% 96% 4% / 5% 96% 4% 95%; transition-delay: 100ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 92% 8% 96% 4% / 5% 96% 4% 95%;"></div>
                     <div class="relative z-10 graffiti-content p-8 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:bg-orange-500/20 group-hover:border-orange-500/50 transition-colors">
-                            <svg class="w-7 h-7 text-blue-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <div class="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20">
+                            <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-heading font-bold mb-3 text-white group-hover:text-orange-400 transition-colors">目标受众</h3>
+                        <h3 class="text-xl font-heading font-bold mb-3 text-white">Target Audience</h3>
                         <p class="text-gray-300 leading-relaxed text-sm">
-                            针对具有规律健身习惯、渴望突破平台期的健身爱好者，以及需要系统化管理个人运动状态的自律人群。
+                            Designed for consistent gym-goers looking to break plateaus and self-disciplined individuals who need systematic management of their athletic data.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Personas Section -->
+        <!-- User Personas -->
         <section id="personas" class="mb-32">
             <div class="flex items-end justify-between mb-12 border-b border-gray-700 pb-6">
                 <div>
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">用户画像 <span class="text-neon">/ PERSONAS</span></h2>
-                    <p class="text-sm text-gray-400 mt-2 font-mono">* AI Assisted Generation (10-80-10 Rule Applied)</p>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">User Personas <span class="text-neon">/ CASE STUDIES</span></h2>
                 </div>
             </div>
             
@@ -199,23 +187,24 @@
                     <div class="graffiti-bg" style="border-radius: 6% 94% 4% 96% / 95% 4% 95% 5%;"></div>
                     <div class="relative z-10 graffiti-content p-8 rounded-2xl flex flex-col sm:flex-row gap-6 h-full transition-transform duration-300 group-hover:-translate-y-1">
                         <div class="w-full sm:w-1/3 flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-gray-700 pb-6 sm:pb-0 sm:pr-6">
-                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Alex&backgroundColor=b6e3f4" alt="Persona 1" class="w-24 h-24 rounded-full mb-4 border-2 border-blue-400/50 group-hover:border-orange-500 transition-colors">
-                            <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-orange-400 transition-colors">Alex 陈</h3>
-                            <p class="text-blue-400 group-hover:text-orange-300 transition-colors text-sm font-semibold mb-3">职场新人 / 健身小白</p>
+                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Alex&backgroundColor=b6e3f4" alt="Persona 1" class="w-24 h-24 rounded-full mb-4 border-2 border-blue-400/50">
+                            <h3 class="text-2xl font-bold text-white mb-1">Alex Chen</h3>
+                            <p class="text-blue-400 text-sm font-semibold mb-3">Office Junior / Gym Novice</p>
                             <div class="text-xs text-gray-400 space-y-1.5 font-mono">
                                 <p>AGE: 24</p>
-                                <p>JOB: 软件工程师</p>
-                                <p>FREQ: 2次/周</p>
+                                <p>FREQ: 2 days/week</p>
                             </div>
                         </div>
                         <div class="w-full sm:w-2/3 space-y-5">
                             <div>
-                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover:bg-orange-500 transition-colors"></span>核心目标 (Goals)</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">希望通过健身改善久坐带来的体态问题，达到减脂增肌的效果，并建立规律的运动习惯。</p>
+                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Primary Goal</h4>
+                                <p class="text-sm text-gray-300">Improve posture caused by desk work, achieve weight loss, and build a consistent fitness habit.</p>
                             </div>
                             <div>
-                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-red-500 group-hover:bg-orange-500 transition-colors"></span>痛点 (Pain Points)</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">对器械和动作不熟悉；记不住上次用的重量，每次都在“盲练”；缺乏即时的数据正向反馈，容易半途而废。</p>
+                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Pain Points</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    Often feels intimidated by complex equipment and doesn't know where to start. Because he lacks a logging habit, he spends half his workout trying to recall what weight he used last time, leading to a disjointed experience. Without seeing tangible proof of progress, he finds it hard to stay motivated during the slow early stages.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -223,26 +212,27 @@
 
                 <!-- Persona 2 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 95% 5% 92% 8% / 6% 95% 5% 94%; transition-delay: 100ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 95% 5% 92% 8% / 6% 95% 5% 94%;"></div>
                     <div class="relative z-10 graffiti-content p-8 rounded-2xl flex flex-col sm:flex-row gap-6 h-full transition-transform duration-300 group-hover:-translate-y-1">
                         <div class="w-full sm:w-1/3 flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-gray-700 pb-6 sm:pb-0 sm:pr-6">
-                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Sarah&backgroundColor=ffdfbf" alt="Persona 2" class="w-24 h-24 rounded-full mb-4 border-2 border-orange-400/50 group-hover:border-orange-500 transition-colors">
-                            <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-orange-400 transition-colors">Sarah 林</h3>
-                            <p class="text-orange-400 group-hover:text-orange-300 transition-colors text-sm font-semibold mb-3">资深爱好者 / 举铁老手</p>
+                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Sarah&backgroundColor=ffdfbf" alt="Persona 2" class="w-24 h-24 rounded-full mb-4 border-2 border-orange-400/50">
+                            <h3 class="text-2xl font-bold text-white mb-1">Sarah Lin</h3>
+                            <p class="text-orange-400 text-sm font-semibold mb-3">Intermediate / Gym Regular</p>
                             <div class="text-xs text-gray-400 space-y-1.5 font-mono">
                                 <p>AGE: 29</p>
-                                <p>JOB: 市场总监</p>
-                                <p>FREQ: 5次/周</p>
+                                <p>FREQ: 4-5 days/week</p>
                             </div>
                         </div>
                         <div class="w-full sm:w-2/3 space-y-5">
                             <div>
-                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>核心目标 (Goals)</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">追求力量突破与肌肉维度的增长，需要严格执行渐进式超负荷训练计划，精准控制每组容量。</p>
+                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Primary Goal</h4>
+                                <p class="text-sm text-gray-300">Break through strength plateaus and refine body composition through disciplined progressive overload.</p>
                             </div>
                             <div>
-                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-red-500 group-hover:bg-orange-500 transition-colors"></span>痛点 (Pain Points)</h4>
-                                <p class="text-sm text-gray-300 leading-relaxed">用手机备忘录记录训练极其低效，难以直观分析每月的容量变化趋势；传统健身APP的社交属性太重，干扰纯粹的记录需求。</p>
+                                <h4 class="text-white text-sm font-semibold flex items-center gap-2 mb-2 group-hover:text-orange-200 transition-colors"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Pain Points</h4>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    Currently stuck at a strength plateau and needs data-driven insights to adjust. Her manual phone notes are scattered and make it impossible to track Total Training Volume over monthly cycles. She feels the lack of a "quick-look" analytics tool prevents her from fine-tuning her split efficiently.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -250,69 +240,60 @@
             </div>
         </section>
 
-        <!-- Our Team Section -->
+        <!-- Our Squad Section -->
         <section id="team" class="relative">
-            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-12 relative z-10 border-b border-gray-700 pb-6">团队成员 <span class="text-neon">/ SQUAD</span></h2>
+            <h2 class="font-heading text-3xl md:text-4xl font-bold text-white uppercase tracking-wide mb-12 border-b border-gray-700 pb-6">Our Squad <span class="text-neon">/ TEAM</span></h2>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-                
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Member 1 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
                     <div class="graffiti-bg" style="border-radius: 95% 5% 92% 8% / 6% 95% 5% 94%;"></div>
                     <div class="relative z-10 graffiti-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
-                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Felix&backgroundColor=1e293b" alt="Xiyu Zhang" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Felix&backgroundColor=1e293b" alt="Xiyu Zhang" class="w-full h-full object-cover grayscale group-hover:grayscale-0" />
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Xiyu Zhang</h4>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Xiyu Zhang</h4>
                         <p class="text-orange-500/90 text-[0.85rem] font-mono font-bold tracking-widest mb-3 uppercase">ID: 2364446</p>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            负责项目整体技术选型与前后端架构搭建，专注于提升应用的数据处理效率与同步稳定性。
-                        </p>
+                        <p class="text-xs text-gray-400">Code addict dreaming of building products that truly change the world.</p>
                     </div>
                 </div>
 
                 <!-- Member 2 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 4% 96% 6% 94% / 94% 5% 96% 4%; transition-delay: 50ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 4% 96% 6% 94% / 94% 5% 96% 4%;"></div>
                     <div class="relative z-10 graffiti-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
-                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Jack&backgroundColor=1e293b" alt="Haijin Xia" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Jack&backgroundColor=1e293b" alt="Haijin Xia" class="w-full h-full object-cover grayscale group-hover:grayscale-0" />
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Haijin Xia</h4>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Haijin Xia</h4>
                         <p class="text-orange-500/90 text-[0.85rem] font-mono font-bold tracking-widest mb-3 uppercase">ID: 2361793</p>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            深入调研健身人群需求，规划产品核心功能路线图，并将游戏化成就系统融入日常训练。
-                        </p>
+                        <p class="text-xs text-gray-400">Curious creator who loves capturing product inspiration from daily life.</p>
                     </div>
                 </div>
 
                 <!-- Member 3 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 92% 8% 96% 4% / 5% 96% 4% 95%; transition-delay: 100ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 92% 8% 96% 4% / 5% 96% 4% 95%;"></div>
                     <div class="relative z-10 graffiti-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
-                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Oliver&backgroundColor=1e293b" alt="Zhichong Zhao" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=Oliver&backgroundColor=1e293b" alt="Zhichong Zhao" class="w-full h-full object-cover grayscale group-hover:grayscale-0" />
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Zhichong Zhao</h4>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Zhichong Zhao</h4>
                         <p class="text-orange-500/90 text-[0.85rem] font-mono font-bold tracking-widest mb-3 uppercase">ID: 2364597</p>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            负责塑造极简、清爽的用户界面。致力于减少用户在组间休息时的交互成本，让记录变得本能。
-                        </p>
+                        <p class="text-xs text-gray-400">Visual perfectionist who believes good design brings order to the world.</p>
                     </div>
                 </div>
 
                 <!-- Member 4 -->
                 <div class="relative group cursor-pointer graffiti-wrap h-full">
-                    <div class="graffiti-bg" style="border-radius: 6% 94% 4% 96% / 95% 4% 95% 5%; transition-delay: 150ms;"></div>
+                    <div class="graffiti-bg" style="border-radius: 6% 94% 4% 96% / 95% 4% 95% 5%;"></div>
                     <div class="relative z-10 graffiti-content p-5 rounded-2xl h-full flex flex-col transition-transform duration-300 group-hover:-translate-y-1">
-                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 relative border border-white/5 bg-slate-800">
-                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=George&backgroundColor=1e293b" alt="Shuaifei Fan" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden mb-5 border border-white/5 bg-slate-800">
+                            <img src="https://api.dicebear.com/7.x/micah/svg?seed=George&backgroundColor=1e293b" alt="Shuaifei Fan" class="w-full h-full object-cover grayscale group-hover:grayscale-0" />
                         </div>
-                        <h4 class="text-xl font-heading font-bold mb-1 text-white group-hover:text-orange-400 transition-colors">Shuaifei Fan</h4>
+                        <h4 class="text-xl font-heading font-bold mb-1 text-white">Shuaifei Fan</h4>
                         <p class="text-orange-500/90 text-[0.85rem] font-mono font-bold tracking-widest mb-3 uppercase">ID: 2360998</p>
-                        <p class="text-xs text-gray-400 leading-relaxed">
-                            负责质量保障与早期用户社区的搭建，收集核心种子用户的反馈以持续迭代产品体验。
-                        </p>
+                        <p class="text-xs text-gray-400">Cross-disciplinary student who loves collecting real user feedback in the gym.</p>
                     </div>
                 </div>
             </div>
